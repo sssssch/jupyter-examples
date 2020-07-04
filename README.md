@@ -1,3 +1,2 @@
 # jupyter-examples
-自建jupyter文档
 主要包括了在学习中使用pycharm与jupyter notebook的一些代码
