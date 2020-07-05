@@ -8,10 +8,6 @@ tfds.disable_progress_bar()
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-
-
-imdb = keras.datasets.imdb
-
 imdb = keras.datasets.imdb
 
 (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
