@@ -3,9 +3,10 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import tensorflow_datasets as tfds
 
+# 分离出validation
 train_data, validation_data, test_data = tfds.load(
     name="imdb_reviews",
-    split=('train[:80%]', 'train[20%:]', 'test'),
+    split=('train[:70%]', 'train[70%:]', 'test'),
     as_supervised=True)
 
 
@@ -25,7 +26,7 @@ model = tf.keras.Sequential()
 model.add(hub_layer)
 model.add(tf.keras.layers.Dense(32, activation='relu'))
 model.add(tf.keras.layers.Dense(32, activation='relu'))
-model.add(tf.keras.layers.Dense(1))
+model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
 
 model.summary()
 
@@ -37,7 +38,7 @@ model.compile(optimizer='adam',
 early_stoping = tf.keras.callbacks.EarlyStopping()
 
 history = model.fit(train_data.shuffle(10000).batch(512),
-                    epochs=20,
+                    epochs=10,
                     callbacks=[early_stoping],
                     validation_data=validation_data.batch(512),
                     verbose=2)
