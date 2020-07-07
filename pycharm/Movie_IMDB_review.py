@@ -1,16 +1,17 @@
 # -*-coding:utf-8-*-
+import os
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import tensorflow_datasets as tfds
 tfds.disable_progress_bar()
-import os
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 imdb = keras.datasets.imdb
 
-(train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
+(train_data, train_labels), (test_data,
+                             test_labels) = imdb.load_data(num_words=10000)
 
 # 一个映射单词到整数索引的词典
 word_index = imdb.get_word_index()
