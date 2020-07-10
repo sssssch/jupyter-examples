@@ -73,21 +73,21 @@ train_X = train_X.reshape((train_X.shape[0], 1, train_X.shape[1]))
 test_X = test_X.reshape((test_X.shape[0], 1, test_X.shape[1]))
 
 # _________________________________________________________________
-model_of_temperature = keras.models.Sequential(
-    [
-        tf.keras.layers.LSTM(
-            32,
-            input_shape=(
-                train_X.shape[1],
-                train_X.shape[2]),
-            return_sequences=False),
-        tf.keras.layers.Dense(
-            128,
-            activation='tanh'),
-        tf.keras.layers.Dropout(0.001),
-        tf.keras.layers.Dense(
-            1,
-            activation='sigmoid')])
+model = Sequential()
+model.add(Conv1D(filters=64, kernel_size=10,
+                 strides=1, padding="causal",
+                 activation="sigmoid"))
+model.add(
+    LSTM(
+        64,
+        input_shape=(
+            train_X.shape[1],
+            train_X.shape[2]),
+        return_sequences=True))
+model.add(LSTM(32, input_shape=(train_X.shape[1], train_X.shape[2])))
+model.add(Dense(32, activation="relu"))
+model.add(Dense(16, activation="relu"))
+model.add(Dense(1))
 
 opt = tf.keras.optimizers.Adam(lr=0.005, decay=1e-6)
 
