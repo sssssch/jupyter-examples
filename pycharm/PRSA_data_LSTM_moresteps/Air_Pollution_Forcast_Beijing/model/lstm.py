@@ -19,7 +19,7 @@ model = Sequential()
 model.add(LSTM(50, input_shape=(train_X.shape[1], train_X.shape[2])))
 model.add(Dense(1))
 model.compile(loss='mae', optimizer='adam')
-history = model.fit(train_X, train_y, epochs=50, batch_size=72, validation_data=(test_X, test_y))
+history = model.fit(train_X, train_y, epochs=3, batch_size=72, validation_data=(test_X, test_y))
 
 '''
     对数据绘图
@@ -36,8 +36,11 @@ yHat = model.predict(test_X)
     这里注意的是保持拼接后的数组  列数  需要与之前的保持一致
 '''
 inv_yHat = concatenate((yHat, test_x[:, 1:]), axis=1)   # 数组拼接
+print(inv_yHat.shape)
 inv_yHat = scaler.inverse_transform(inv_yHat)
+print(inv_yHat.shape)
 inv_yHat = inv_yHat[:, 0]
+print(inv_yHat.shape)
 
 test_y = test_y.reshape((len(test_y), 1))
 inv_y = concatenate((test_y, test_x[:, 1:]), axis=1)

@@ -40,7 +40,7 @@ reframed = series_to_supervised(scaled, dataset_columns, 1, 1)
 reframed.drop(reframed.columns[[9, 10, 11, 12, 13, 14, 15]], axis=1, inplace=True)
 
 values = reframed.values
-n_train_hours = 365 * 24 *4
+n_train_hours = 365 * 24 * 4
 train = values[:n_train_hours, :]
 test = values[n_train_hours:, :]
 print(train.shape)

@@ -24,7 +24,7 @@ plt.figure()
 for group in groups:
     plt.subplot(len(groups), 1, i)
     plt.plot(values[:, group])
-    plt.title(dataset.columns[group], y=0.5, loc='right')
+    plt.title(dataset.columns[group], y = 0.2, loc='right')
     i += 1
 plt.show()
 
