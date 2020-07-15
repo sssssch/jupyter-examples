@@ -8,3 +8,5 @@
 ## crawl
 >自学爬虫用来爬取股票之类的时间序列数据，用来预测与优化模型，主要使用requests与scrapy框架完成
 >新增加了beautifulsoup的example
+## Project_Alibaba_workload
+>基于Alibaba_cluster_workload的多变量时间序列预测
