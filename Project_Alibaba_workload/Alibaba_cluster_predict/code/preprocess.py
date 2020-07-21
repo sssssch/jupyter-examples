@@ -27,10 +27,8 @@ dataset.columns = [
     'net_out',
     'disk_usage_percent']
 dataset.index.name = 'Time'
-
 dataset['mem_gps'].fillna(0, inplace=True)
 dataset['mpki'].fillna(0, inplace=True)
-
 print(dataset.head())
 
 dataset.to_csv('Machine_usage_fill.csv')
