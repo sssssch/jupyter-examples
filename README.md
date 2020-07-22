@@ -10,5 +10,7 @@ jupyter文件夹中包括了Time_sequence_LSTM_Predict的已运行实例（Colab
 新增加了beautifulsoup的example
 ## Project_Alibaba_workload
 基于Alibaba_cluster_workload的多变量时间序列预测
+## Project_google_task_usage
+基于google_task_usage 2011的数据分析处理与时间序列预测
 ## python_learning
-主要分为leetcode与数据结构与算法两个方面
+主要分为Leetcode与数据结构与算法两个方面，以Leetcode的实例为主
