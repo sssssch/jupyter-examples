@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from numpy import concatenate
-import keras
+
 
 
 df = pd.read_csv('paris_data_3.csv')

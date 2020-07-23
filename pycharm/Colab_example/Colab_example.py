@@ -1,13 +1,9 @@
 # -*-coding:utf-8-*-
 import tensorflow as tf
-
-import matplotlib.pyplot as plt
 import pandas as pd
 from keras import Sequential
 from keras.layers import Conv1D, LSTM, Dense
-from keras.losses import mean_squared_error
 from matplotlib import pyplot
-from numpy import concatenate, sqrt
 from pandas import read_csv, DataFrame, concat
 from sklearn.preprocessing import MinMaxScaler
 

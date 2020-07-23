@@ -1,8 +1,7 @@
 #-*-coding:utf-8-*-
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-from scipy import interpolate
+
 file = pd.read_csv(
     '/Users/mac/Downloads/Plot_MSE_via_Matlab/mse_plot.csv',
     header = None,
