@@ -24,17 +24,17 @@ def series_to_supervised(data, columns, n_in=1, n_out=1, dropnan=True):
     df = pd.DataFrame(data)
     cols, names = list(), list()
     # input sequence (t-n, ... t-1)
-    for i in range(n_in, 0, -1):
-        cols.append(df.shift(i))
-        names += [('%s%d(t-%d)' % (columns[j], j + 1, i))
+    for index in range(n_in, 0, -1):
+        cols.append(df.shift(index))
+        names += [('%s%d(t-%d)' % (columns[j], j + 1, index))
                   for j in range(n_vars)]
     # forecast sequence (t, t+1, ... t+n)
-    for i in range(0, n_out):
-        cols.append(df.shift(-i))
-        if i == 0:
+    for index in range(0, n_out):
+        cols.append(df.shift(-index))
+        if index == 0:
             names += [('%s%d(t)' % (columns[j], j + 1)) for j in range(n_vars)]
         else:
-            names += [('%s%d(t+%d)' % (columns[j], j + 1, i))
+            names += [('%s%d(t+%d)' % (columns[j], j + 1, index))
                       for j in range(n_vars)]
     # put it all together
     agg = pd.concat(cols, axis=1)

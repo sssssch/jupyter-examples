@@ -8,13 +8,11 @@ Original file is located at
 """
 
 
-
 from math import sqrt
 import tensorflow as tf
-from tensorflow import keras
 import pandas as pd
 from tensorflow.keras import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, Conv1D, GRU
+from tensorflow.keras.layers import Dense, Dropout, Conv1D, GRU
 from tensorflow.keras.losses import mean_squared_error
 from numpy.core._multiarray_umath import concatenate
 from sklearn.preprocessing import MinMaxScaler
@@ -77,7 +75,6 @@ train_x, train_y = train[:, :-1], train[:, -1]
 test_x, test_y = test[:, :-1], test[:, -1]
 
 
-
 # 为了在LSTM中应用该数据，需要将其格式转化为3D format，即[Samples, timesteps, features]
 train_X = train_x.reshape((train_x.shape[0], 1, train_x.shape[1]))
 test_X = test_x.reshape((test_x.shape[0], 1, test_x.shape[1]))
@@ -98,17 +95,17 @@ model.add(Dense(16, activation="relu"))
 model.add(Dropout(0.2))
 model.add(Dense(1))
 model.compile(loss=tf.keras.losses.Huber(),
-    optimizer='adam',
-    metrics=["mse"])
+              optimizer='adam',
+              metrics=["mse"])
 history = model.fit(
     train_X,
     train_y,
     epochs=50,
     batch_size=72,
-    validation_split = 0.2,
-verbose = 2)
+    validation_split=0.2,
+    verbose=2)
 
-#画图
+# 画图
 plt.plot(history.history['loss'], label='train')
 plt.plot(history.history['val_loss'], label='test')
 plt.legend()

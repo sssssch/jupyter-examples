@@ -12,7 +12,7 @@ from math import sqrt
 import tensorflow as tf
 import pandas as pd
 from tensorflow.keras import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, Conv1D, GRU
+from tensorflow.keras.layers import Dense, Dropout, Conv1D, GRU
 from tensorflow.keras.losses import mean_squared_error
 from numpy.core._multiarray_umath import concatenate
 from sklearn.preprocessing import MinMaxScaler
