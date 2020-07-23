@@ -11,9 +11,6 @@ train_data, validation_data, test_data = tfds.load(
 
 
 train_examples_batch, train_labels_batch = next(iter(train_data.batch(10)))
-train_examples_batch
-
-train_labels_batch
 
 embedding = "https://hub.tensorflow.google.cn/google/tf2-preview/gnews-swivel-20dim/1"
 hub_layer = hub.KerasLayer(embedding, input_shape=[],

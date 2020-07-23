@@ -15,7 +15,6 @@ import pandas as pd
 from Air_Pollution_Forcast_Beijing.util import PROCESS_LEVEL1
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import OneHotEncoder
 from Air_Pollution_Forcast_Beijing.model.series_to_supervised_learning import series_to_supervised
 pd.options.display.expand_frame_repr = False
 

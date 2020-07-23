@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 
 # supervised监督学习函数
 def series_to_supervised(data, columns, n_in=1, n_out=1, dropnan=True):
-    global clean_agg
     n_vars = 1 if isinstance(data, list) else data.shape[1]
     df = pd.DataFrame(data)
     cols, names = list(), list()
