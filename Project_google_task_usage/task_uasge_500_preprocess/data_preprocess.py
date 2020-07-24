@@ -76,17 +76,17 @@ scui = [0] * (end_num - 600)
 # 意味着我需要读取对应的第i行数据，再将其赋值到cpu对应的，从st到et的数组中
 for i in range(0, col_len - 1):
     # 在这里，还需要将cpu的数组位置进行调整
-    cpu[int(st[i]) - 600:int(et[i]) - 900] += mcur[i]
-    cmui[int(st[i]) - 600:int(et[i]) - 900] += cmu[i]
-    amui[int(st[i]) - 600:int(et[i]) - 900] += amu[i]
-    upcmui[int(st[i]) - 600:int(et[i]) - 900] += upcmu[i]
-    tpcmui[int(st[i]) - 600:int(et[i]) - 900] += tpcmu[i]
-    mmui[int(st[i]) - 600:int(et[i]) - 900] += mmu[i]
-    mditi[int(st[i]) - 600:int(et[i]) - 900] += mdit[i]
-    mldsui[int(st[i]) - 600:int(et[i]) - 900] += mldsu[i]
-    mcui[int(st[i]) - 600:int(et[i]) - 900] += mcu[i]
-    maii[int(st[i]) - 600:int(et[i]) - 900] += mai[i]
-    scui[int(st[i]) - 600:int(et[i]) - 900] += scu[i]
+    cpu[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mcur[i]
+    cmui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += cmu[i]
+    amui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += amu[i]
+    upcmui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += upcmu[i]
+    tpcmui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += tpcmu[i]
+    mmui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mmu[i]
+    mditi[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mdit[i]
+    mldsui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mldsu[i]
+    mcui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mcu[i]
+    maii[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mai[i]
+    scui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += scu[i]
 
 # 在这里，我将对生成的cpu数据进行划分，使得cpu = cpui / 当前时刻工作机器数量
 # for i in range(0, col_len - 1):
@@ -124,7 +124,3 @@ list[9] = maii
 list[10] = scui
 
 np.savetxt("test.csv", list, delimiter=',')
-
-
-
-
