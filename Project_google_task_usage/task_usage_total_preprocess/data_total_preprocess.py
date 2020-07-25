@@ -106,16 +106,16 @@ mcui = list(map(lambda x: x * (end_num / 300) / col_len, mcui))
 scui = list(map(lambda x: x * (end_num / 300) / col_len, scui))
 print(cpu)
 
-list = np.zeros((11, (end_num - 600)))
-list[0] = cpu
-list[1] = cmui
-list[2] = amui
-list[3] = upcmui
-list[4] = tpcmui
-list[5] = mmui
-list[6] = mditi
-list[7] = mldsui
-list[8] = mcui
-list[10] = scui
+lissi = np.zeros((11, (end_num - 600)))
+lissi[0] = cpu
+lissi[1] = cmui
+lissi[2] = amui
+lissi[3] = upcmui
+lissi[4] = tpcmui
+lissi[5] = mmui
+lissi[6] = mditi
+lissi[7] = mldsui
+lissi[8] = mcui
+lissi[10] = scui
 
-np.savetxt("test.csv", list, delimiter=',')
+np.savetxt("test.csv", lissi, delimiter=',')
