@@ -17,7 +17,6 @@ from tensorflow.keras.losses import mean_squared_error
 from numpy.core._multiarray_umath import concatenate
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
-from tensorflow.keras.layers import Layer
 
 
 # supervised监督学习函数

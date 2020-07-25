@@ -1,18 +1,17 @@
 # -*-coding:utf-8-*-
 from math import sqrt
-from numpy import concatenate
-from matplotlib import pyplot
-from pandas import read_csv, datetime
-from pandas import DataFrame
-from pandas import concat
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import mean_squared_error
-from keras.models import Sequential
+import matplotlib.pyplot as plt
+import tensorflow as tf
 from keras.layers import Dense, Conv1D
 from keras.layers import LSTM
-import tensorflow as tf
-import matplotlib.pyplot as plt
+from keras.models import Sequential
+from numpy import concatenate
+from pandas import DataFrame
+from pandas import concat
+from pandas import read_csv, datetime
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import MinMaxScaler
 
 
 def parse(x):
@@ -96,7 +95,7 @@ model.add(LSTM(50, input_shape=(train_X.shape[1], train_X.shape[2])))
 model.add(Dense(25, activation="relu"))
 model.add(Dense(1))
 
-#optimizer = tf.keras.optimizers.SGD(lr=0.001, momentum=0.9)
+# optimizer = tf.keras.optimizers.SGD(lr=0.001, momentum=0.9)
 model.compile(
     loss=tf.keras.losses.Huber(),
     optimizer='adam',
@@ -135,7 +134,6 @@ inv_y = inv_y[:, 0]
 # calculate RMSE
 rmse = sqrt(mean_squared_error(inv_y, inv_yhat))
 print('Test RMSE: %.3f' % rmse)
-
 
 raw = inv_y.size
 inv_y = inv_y[-24 * 3:]

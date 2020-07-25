@@ -1,7 +1,6 @@
 # -*-coding:utf-8-*-
 import os
 import matplotlib.pyplot as plt
-import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import tensorflow_datasets as tfds
