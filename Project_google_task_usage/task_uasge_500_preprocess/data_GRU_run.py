@@ -8,7 +8,6 @@ from tensorflow.keras.losses import mean_squared_error
 from numpy.core._multiarray_umath import concatenate
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
-from tensorflow.keras.layers import Layer
 
 
 # supervised监督学习函数
@@ -66,7 +65,7 @@ test = values[n_train_hours:, :]
 train_x, train_y = train[:, :-1], train[:, -1]
 test_x, test_y = test[:, :-1], test[:, -1]
 
-# 为了在LSTM中应用该数据，需要将其格式转化为3D format，即[Samples, timesteps, features]
+# 为了在LSTM&GRU中应用该数据，需要将其格式转化为3D format，即[Samples, timesteps, features]
 train_X = train_x.reshape((train_x.shape[0], 1, train_x.shape[1]))
 test_X = test_x.reshape((test_x.shape[0], 1, test_x.shape[1]))
 

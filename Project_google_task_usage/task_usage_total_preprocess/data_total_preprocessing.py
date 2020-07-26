@@ -1,16 +1,36 @@
 # -*-coding:utf-8-*-
-# -*-coding:utf-8-*-
+
 import pandas as pd
 import numpy as np
 
-dataset = pd.read_csv(
-    'task_usage.csv')
+name = [
+    'start_time',
+    'end_time',
+    'job_id',
+    'task_index',
+    'machine_id',
+    'mean_cpu_usage_rate',
+    'canonical_memory_usage',
+    'assigned_memory_usage',
+    'unmapped_page_cache_memory_usage',
+    'total_page_cache_memory_usage',
+    'maximum_memory_usage',
+    'mean_disk_io_time',
+    'mean_local_disk_space_used',
+    'maximum_cpu_usage',
+    'maximum_disk_io_time',
+    'cpi',
+    'mai',
+    'sample_portion',
+    'aggregation_type',
+    'sampled_cpu_usage']
+
+dataset = pd.read_csv('task_usage_headed.csv', header=None, names=name)
 
 dataset.drop('maximum_disk_io_time', axis=1, inplace=True)
 dataset.drop('cpi', axis=1, inplace=True)
 dataset.drop('aggregation_type', axis=1, inplace=True)
 dataset.drop('sample_portion', axis=1, inplace=True)
-dataset.drop('mai', axis=1, inplace=True)
 
 dataset.columns = [
     'start_time',
@@ -27,6 +47,7 @@ dataset.columns = [
     'mean_disk_io_time',
     'mean_local_disk_space_used',
     'maximum_cpu_usage',
+    'mai',
     'sampled_cpu_usage']
 print(dataset.head())
 
@@ -51,6 +72,7 @@ mmu = dataset['maximum_memory_usage']
 mdit = dataset['mean_disk_io_time']
 mldsu = dataset['mean_local_disk_space_used']
 mcu = dataset['maximum_cpu_usage']
+mai = dataset['mai']
 scu = dataset['sampled_cpu_usage']
 
 col_len = len(st)
@@ -68,6 +90,7 @@ mmui = [0] * (end_num - 600)
 mditi = [0] * (end_num - 600)
 mldsui = [0] * (end_num - 600)
 mcui = [0] * (end_num - 600)
+maii = [0] * (end_num - 600)
 scui = [0] * (end_num - 600)
 # 将cpu循环赋值，需要以行为单位，将每一行的cpu信息添加至cpu数组中
 # 这里的i代表着index
@@ -83,6 +106,7 @@ for i in range(0, col_len - 1):
     mditi[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mdit[i]
     mldsui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mldsu[i]
     mcui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mcu[i]
+    maii[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += mai[i]
     scui[int(st[i]) - 600:int(2 * et[i] - st[i] - 900)] += scu[i]
 
 # 在这里，我将对生成的cpu数据进行划分，使得cpu = cpui / 当前时刻工作机器数量
@@ -103,6 +127,7 @@ mmui = list(map(lambda x: x * (end_num / 300) / col_len, mmui))
 mditi = list(map(lambda x: x * (end_num / 300) / col_len, mditi))
 mldsui = list(map(lambda x: x * (end_num / 300) / col_len, mldsui))
 mcui = list(map(lambda x: x * (end_num / 300) / col_len, mcui))
+maii = list(map(lambda x: x * (end_num / 300) / col_len, maii))
 scui = list(map(lambda x: x * (end_num / 300) / col_len, scui))
 print(cpu)
 
@@ -116,6 +141,7 @@ lissi[5] = mmui
 lissi[6] = mditi
 lissi[7] = mldsui
 lissi[8] = mcui
+lissi[9] = maii
 lissi[10] = scui
 
 np.savetxt("test.csv", lissi, delimiter=',')

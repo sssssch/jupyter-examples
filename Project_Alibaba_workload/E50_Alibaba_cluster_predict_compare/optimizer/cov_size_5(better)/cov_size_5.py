@@ -17,7 +17,6 @@ from numpy.core._multiarray_umath import concatenate
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
-from tensorflow.keras.layers import Layer
 
 
 # supervised监督学习函数
@@ -47,6 +46,7 @@ def series_to_supervised(data, columns, n_in=1, n_out=1, dropnan=True):
     if dropnan:
         clean_agg = agg.dropna()
     return clean_agg
+
 
 dataset = pd.read_csv(
     'Machine_usage_groupby.csv')
@@ -94,8 +94,8 @@ model.add(Dense(16, activation="relu"))
 model.add(Dropout(0.2))
 model.add(Dense(1))
 model.compile(loss=tf.keras.losses.Huber(),
-    optimizer='adam',
-    metrics=["mse"])
+              optimizer='adam',
+              metrics=["mse"])
 history = model.fit(
     train_X,
     train_y,
@@ -104,9 +104,9 @@ history = model.fit(
     validation_data=(
         test_X,
         test_y),
-verbose = 2)
+    verbose=2)
 
-#画图
+# 画图
 plt.plot(history.history['loss'], label='train')
 plt.plot(history.history['val_loss'], label='test')
 plt.legend()
