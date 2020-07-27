@@ -1,7 +1,6 @@
 # -*-coding:utf-8-*-
 import pandas as pd
 from numpy import *
-import numpy as np
 
 dataset = pd.read_csv(
     'test_data.csv', header=None)
