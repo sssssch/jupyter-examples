@@ -1,6 +1,7 @@
 # -*-coding:utf-8-*-
 
 import pandas as pd
+import numpy as np
 from numpy import *
 
 name = [
@@ -29,7 +30,9 @@ dataset = pd.read_csv(
     'task_usage.csv',
     header=None,
     names=name,
-    nrows=10000000)
+    nrows=15000000)
+
+
 
 dataset.drop('maximum_disk_io_time', axis=1, inplace=True)
 dataset.drop('cpi', axis=1, inplace=True)
@@ -142,7 +145,7 @@ lissi[8] = scui
 
 # np.savetxt("test.csv", lissi, delimiter=',')
 
-dataset = round(lissi, 8)
+dataset = np.round(lissi, 8)
 List_data = mat(dataset)
 Inverse = List_data.T
 name = [
@@ -160,5 +163,4 @@ name = [
 test = pd.DataFrame(columns=name, data=Inverse)
 test.to_csv(
     'task_usage_total_inversed_bycode.csv',
-    encoding='gbk',
-    header=None)
+    encoding='gbk')
